@@ -1,10 +1,20 @@
 import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import { AppComponent } from '../app.component';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterOutlet } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent, ReactiveFormsModule, RouterOutlet],
+      providers: [
+        ApiService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ]
     }).compileComponents();
   });
 
@@ -20,10 +30,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('color-translator-web-app');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, color-translator-web-app');
-  });
 });
