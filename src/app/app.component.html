@@ -1,9 +1,22 @@
 <div class="app">
   <form class="color-form">
-    <h1>Universal Color Translator</h1>
+    <h1 class="display-1">Universal Color Translator</h1>
     <label for="color-name-input">Enter color name:</label>
-    <input type="text" id="color-name-input" [formControl]="colorNameCtrl">
-    <button type="button" (click)="getHex()">Translate</button>
-    <h2 id="result">Hex: <span [ngStyle]="{ color: result }">{{ result }}</span></h2>
+    <input
+      type="text"
+      class="form-control"
+      id="color-name-input"
+      [formControl]="colorNameCtrl"
+    >
+    <button
+      type="button"
+      (click)="getHex()"
+      class="btn btn-primary"
+    >
+      Translate
+    </button>
+    <h2 class="display-6" id="result">
+      Hex: <span [ngStyle]="{ color: result }">{{ result }}</span>
+    </h2>
   </form>
 </div>
